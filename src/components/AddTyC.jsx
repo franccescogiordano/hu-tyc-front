@@ -9,7 +9,8 @@ const AddTyC = () => {
     const [documento, setDocumento] = useState("");
     const [tipoDocumento, setTicoDocumento] = useState("");
     const dispatch = useDispatch();
-  
+    const [status2, setStatus2] = React.useState(false);
+    let x=1;
     const { actCargarAceptacion, actGetTyc} = action();
     useEffect(() => {dispatch(actGetTyc());}, []);
     const cargarAcep =() => {
@@ -26,6 +27,10 @@ const AddTyC = () => {
         setTicoDocumento(e.target.value)
     }
   
+    const funcionashe = () => {
+        setStatus2(true)
+        setStatus(false)
+    }
     return (<>
         <div>
             <h1 className="bg-blue-500">HELLO WORLD</h1>
@@ -40,12 +45,13 @@ const AddTyC = () => {
             <input
         type="checkbox"
         value={checked}
-        disabled={!status}
+        disabled={!status2}
         onChange={onChangeHandler}
       />
-      <Popup trigger={<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terminos y Condiones</button>} position="right center">
+    <Popup trigger={<button  disabled={!status} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terminos y Condiones</button>} position="right center">
     <div><h2>
         {tyc.texto}
+        <button onClick={()=>funcionashe()} >Cerrar</button>
         </h2></div>
   </Popup>
 
