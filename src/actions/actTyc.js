@@ -28,7 +28,9 @@ const actCargarAceptacion = (tipoDocumentoX,numeroDoc,versionTyCX)=>async(dispat
         fetch("http://localhost:8080/api/TyC/agregarAceptacion", {
             method: "POST",
             body: JSON.stringify(request),
-            headers: { "Content-Type": "application/json" }
+            headers: { 
+                "Access-Control-Allow-Headers":"Content-Type",
+                "Content-Type": "application/json" }
         })
             .then(response => response.json())
             .then(data => dispatch({
@@ -36,7 +38,7 @@ const actCargarAceptacion = (tipoDocumentoX,numeroDoc,versionTyCX)=>async(dispat
                 payload: data
             }));
     } catch(error) {
-        console.log(error.message);
+       dispatch({type: "cargarTyCAccept", payload:"error"});
     }
 }
 export const action = ()=>{
