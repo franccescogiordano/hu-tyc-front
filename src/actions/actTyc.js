@@ -3,6 +3,7 @@
 
 const actGetTyc = ()=>async(dispatch)=>{
     try {   
+        console.log("entre al getTyC")
         fetch('http://localhost:8080/api/TyC/obtenerElUltimo')
             .then(response => response.json())
             .then(data => dispatch({
@@ -10,7 +11,7 @@ const actGetTyc = ()=>async(dispatch)=>{
                 payload:data 
             }));
     } catch (e) {
-        console.log(e)
+        console.log("error: ",e)
     }
 }
 
@@ -29,7 +30,6 @@ const actCargarAceptacion = (tipoDocumentoX,numeroDoc,versionTyCX)=>async(dispat
             method: "POST",
             body: JSON.stringify(request),
             headers: { 
-                "Access-Control-Allow-Headers":"Content-Type",
                 "Content-Type": "application/json" }
         })
             .then(response => response.json())
@@ -41,9 +41,21 @@ const actCargarAceptacion = (tipoDocumentoX,numeroDoc,versionTyCX)=>async(dispat
        dispatch({type: "cargarTyCAccept", payload:"error"});
     }
 }
+
+const actLimpiar = ()=>async(dispatch)=>{
+    try {   
+         dispatch({
+                type: "limpiarTodo"
+            });
+    } catch (e) {
+        console.log("error: ",e)
+    }
+}
+
 export const action = ()=>{
     return{
         actGetTyc,
+        actLimpiar,
         actCargarAceptacion,
     }
 }

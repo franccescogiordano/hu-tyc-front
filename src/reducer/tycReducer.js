@@ -5,11 +5,11 @@ const initialState = {
 }
 
 export const tycReducer = (state = initialState, action) => {
-    console.log("tu vieja");
     switch (action.type) {
-       
+        
         case "getTyC":
-            console.log("a",action.payload)
+            console.log("tyc:", action.payload);
+          //  console.log("a",action.payload)
             return {
                 ...state,
                 tyc: action.payload
@@ -17,8 +17,11 @@ export const tycReducer = (state = initialState, action) => {
         case "mensaje":
             return { ...state, mensaje: action.payload }
         case "cargarTyCAccept":
-            //    console.log("payload carrito", action.payload)
+             //  console.log("payload carrito", action.payload)
                 return { ...state, atyc: action.payload }
+        case "limpiarTodo":
+                    //  console.log("payload carrito", action.payload)
+                       return { ...state, atyc: ""}        
         default:
             return state;
     }
