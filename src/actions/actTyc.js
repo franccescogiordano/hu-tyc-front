@@ -26,7 +26,7 @@ const actCargarAceptacion = (tipoDocumentoX,numeroDoc,versionTyCX)=>async(dispat
         }
         console.log(request)
         console.log(JSON.stringify(request))
-        fetch("http://localhost:8080/api/TyC/agregarAceptacion", {
+        fetch("http://localhost:8080/api/ATyC/agregarAceptacion", {
             method: "POST",
             body: JSON.stringify(request),
             headers: { 

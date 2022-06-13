@@ -116,13 +116,15 @@ const userSchema = Yup.object().shape({
                                 {errors.documento && touched.documento ? (
                                     <div className="m-4 row justify-center">{errors.documento}</div>
                                 ) : null}
-                                <div className=" appearance-none  border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer">
+                                <div className="mb-6">
                                     <Field
                                         type="checkbox"
                                         name="validar"
+                                        checked={checked}
                                         value={checked}
                                         disabled={!statusCheckBox}
                                         onChange={onChangeHandler}
+                                        className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                     />
                                     {status && <Popup trigger={<button disabled={!status} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Terminos y Condiones</button>} position="right center">
                                         <div><h2>
